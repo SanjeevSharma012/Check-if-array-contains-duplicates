@@ -1,4 +1,4 @@
-
+1.Solution
 
 class Solution {
     public boolean checkDuplicates(int arr[]) {
@@ -12,4 +12,27 @@ class Solution {
         }
         return false;
     }
+}
+
+2.Solution
+class Solution {
+    public ArrayList<Integer> findDuplicates(int[] arr) {
+        ArrayList<Integer> list = new ArrayList<>();
+      int n = arr.length ;
+      int i = 0 ;
+      while(i < n){
+          int rightidx = arr[i] - 1 ;
+          if(arr[i] == i + 1 || arr[rightidx] == arr[i]) i++;
+          else swap(arr,i,rightidx);
+      }
+      for(i = 0 ; i < n ; i++){
+          if(arr[i] != i+1) list.add(arr[i]);
+      }
+      return list;
+    }
+   void swap(int[] arr,int  i , int j){
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+ }
 }
